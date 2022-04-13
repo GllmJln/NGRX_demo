@@ -88,3 +88,16 @@ button.delete:hover {
   background-color: #525252;
   color: white;
 }
+
+.close-button {
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color:white;
+  background-color: rgb(160, 36, 36);
+ }
+ 
+ .close-button:hover {
+   color: white;
+   background-color: rgb(191, 47, 47);
+ }

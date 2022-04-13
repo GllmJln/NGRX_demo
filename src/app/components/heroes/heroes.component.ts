@@ -11,6 +11,8 @@ import { MessageService } from '../../services/message.service'
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   constructor(private heroService: HeroService, private messageService: MessageService) { }
+  show: boolean = false;
+  heroName: string = '';
 
   ngOnInit(): void {
     this.getHeroes();
@@ -22,6 +24,7 @@ export class HeroesComponent implements OnInit {
   }
 
   add(name: string): void {
+    this.show = !this.show
     name = name.trim();
     if (!name) { return; }
     this.heroService.addHero({ name } as Hero)
