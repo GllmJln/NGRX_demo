@@ -33,11 +33,11 @@ label {
     padding: .5rem;
     box-sizing: border-box;
     text-decoration: none;
-    color: black;
+    color: aliceblue;
   }
   
   .search-result li a:hover {
-    background-color: #435A60;
+    background-color: #b633bb;
     color: white;
   }
   

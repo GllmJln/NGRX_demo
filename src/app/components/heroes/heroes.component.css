@@ -66,11 +66,13 @@ input {
  padding: .5rem 1.5rem;
  font-size: 1rem;
  margin-bottom: 2rem;
+ background-color: rgb(113, 173, 113);
 }
 
 .add-button:hover {
   color: white;
   background-color: #42545C;
+  background-color: rgb(142, 181, 85);
 }
 
 button.delete {
