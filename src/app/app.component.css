@@ -16,13 +16,13 @@
   padding: 1rem;
   text-decoration: none;
   display: inline-block;
-  background-color: #e3dce6;
-  color: aliceblue;
+  background-color: #817e7e;
+  color: rgb(20, 22, 24);
   margin: auto 10px 10px 10px;
 }
 
 .item:hover {
-  color: white;
+  color: rgb(80, 74, 74);
   background-color: #d6d2d6;
   border-radius: 3px;
 }
@@ -35,7 +35,7 @@ nav {
   flex-wrap: wrap;
   border-radius: 10px;
   padding-left: 0;
-  background-color: #ffffff;
+  background-color: #8d8a8a;
   width: 100%;
   margin: 0 0 1rem 0;
 }

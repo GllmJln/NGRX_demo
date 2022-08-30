@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Hero } from 'src/app/Hero';
 import { HeroService } from 'src/app/services/hero.service';
+import { State } from 'src/app/store';
+import { fetchHeroes } from 'src/app/store/hero/hero.actions';
+import { selectTop5Heroes } from 'src/app/store/hero/hero.selector';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
-
-  constructor(private heroService: HeroService) { }
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.store.dispatch(fetchHeroes());
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  get heroes$(): Observable<Hero[]> {
+    return this.store.pipe(select(selectTop5Heroes));
   }
 }
