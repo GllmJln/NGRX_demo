@@ -19,5 +19,5 @@ export const heroReducer = createReducer(
   initialHeroState,
   on(fetchHeroes, state => ({ ...state, loading: true })),
   on(fetchHeroesSuccess, (state, action) => ({ ...heroStateAdapter.setAll(action.payload, state), loading: false })),
-  on(fetchHeroesFailed, (state, action) => ({ ...heroStateAdapter.setAll([], state), loading: false }))
+  on(fetchHeroesFailed, state => ({ ...heroStateAdapter.setAll([], state), loading: false }))
 );

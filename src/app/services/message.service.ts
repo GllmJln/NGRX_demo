@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { State } from '../store';
 import { AddMessage, ClearMessage } from '../store/message/message.actions';
 
@@ -10,7 +10,7 @@ import { AddMessage, ClearMessage } from '../store/message/message.actions';
 export class MessageService {
   constructor(private store: Store<State>) {}
 
-  get messages$() {
+  get messages$(): Observable<string[]> {
     return this.store.select('messages').pipe(map(messages => messages.messages));
   }
 
