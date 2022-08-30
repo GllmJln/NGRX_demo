@@ -1,20 +1,35 @@
 <h2>My Heroes</h2>
 <div *ngIf="show">
   <label for="new-hero">Hero name: </label>
-  <input id="new-hero" [(ngModel)]="heroName" placeholder="Enter new Hero name..."/>
-  
+  <input
+    id="new-hero"
+    [(ngModel)]="heroName"
+    placeholder="Enter new Hero name..."
+  />
 </div>
-<button type="button" [ngClass]="{'add-button': !(show && heroName.length === 0),'close-button': (show && heroName.length === 0)}" (click)="add(heroName); heroName=''">
-  {{(show && heroName.length === 0) ? 'Close' : 'Add a Hero'}}
+<button
+  type="button"
+  [ngClass]="{
+    'add-button': !(show && heroName.length === 0),
+    'close-button': show && heroName.length === 0
+  }"
+  (click)="add(heroName); heroName = ''"
+>
+  {{ show && heroName.length === 0 ? "Close" : "Add a Hero" }}
 </button>
-
 
 <ul *ngIf="!show" class="heroes">
   <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <a routerLink="/detail/{{ hero.id }}">
+      <span class="badge">{{ hero.id }}</span> {{ hero.name }}
     </a>
-    <button type="button" class="delete" title="delete hero"
-  (click)="delete(hero)">x</button>
+    <button
+      type="button"
+      class="delete"
+      title="delete hero"
+      (click)="delete(hero)"
+    >
+      x
+    </button>
   </li>
 </ul>
