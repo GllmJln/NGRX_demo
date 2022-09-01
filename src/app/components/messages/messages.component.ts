@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -6,11 +7,14 @@ import { MessageService } from 'src/app/services/message.service';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent {
+  constructor(public messageService: MessageService) {}
 
-  constructor(public messageService: MessageService) { }
-
-  ngOnInit(): void {
+  get messages$(): Observable<string[]> {
+    return this.messageService.messages$;
   }
 
+  handleClick() {
+    this.messageService.clear();
+  }
 }

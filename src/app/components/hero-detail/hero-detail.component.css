@@ -3,7 +3,7 @@ label {
     color: aliceblue;
     font-weight: bold;
   }
-  input {
+  #hero-name {
     font-size: 1em;
     padding: .5rem;
   }

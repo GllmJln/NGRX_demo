@@ -1,4 +1,5 @@
 import { createSelector } from '@ngrx/store';
+import { Hero } from 'src/app/Hero';
 import { heroesFeatureState, heroStateAdapter } from './hero.reducer';
 
 const { selectIds, selectEntities, selectAll, selectTotal } = heroStateAdapter.getSelectors();
@@ -17,4 +18,14 @@ export const selectHeroesTotal = createSelector(heroesFeatureState, state => sel
 
 export const selectHeroesLoadingState = createSelector(heroesFeatureState, state => state.loading);
 
+//Can chain selectors
 export const selectTop5Heroes = createSelector(selectAllHeroes, state => state.slice(1, 5));
+
+//Can pass parameters to selectors
+export const selectOneHero = (key: keyof Hero, value: any) =>
+  createSelector(selectAllHeroes, heros => {
+    return heros.find(hero => hero[key] === value);
+  });
+
+export const selectOneHeroById = (id: number) => selectOneHero('id', id);
+export const selectOneHeroByName = (name: number) => selectOneHero('name', name);
